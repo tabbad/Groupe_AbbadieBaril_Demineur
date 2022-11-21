@@ -66,7 +66,8 @@ public class DFenetre extends JFrame {
 		
 		/* Affichage */
 		
-		this.setSize(20*nb_col + 6, 20*nb_lgn + 50 + 23 + 25);
+		//this.setSize(20*nb_col + 6, 20*nb_lgn + 50 + 23 + 25);
+		this.setSize(22*nb_col + 6, 22*nb_lgn + 50 + 23 + 25);
 		
 		this.setResizable(false);
 	 	
@@ -82,17 +83,17 @@ public class DFenetre extends JFrame {
 		jeu  = new JMenu("Jeu");
 		nouvelle = new JMenuItem("Nouvelle partie");
 		nouvelle.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N,InputEvent.CTRL_MASK));
-		nouvelle.setToolTipText("Partie avec les mêmes paramètres");
+		nouvelle.setToolTipText("Partie avec les mï¿½mes paramï¿½tres");
 		jeu.add(nouvelle);
 		jeu.addSeparator();
 		
 		ButtonGroup groupRadio=new ButtonGroup();
 		
-		debutant = new JRadioButtonMenuItem("Débutant");
+		debutant = new JRadioButtonMenuItem("Dï¿½butant");
 		debutant.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D,InputEvent.CTRL_MASK));
 		debutant.setToolTipText("81 cases 10 mines");
 		
-		intermediaire = new JRadioButtonMenuItem("Intermédiaire");
+		intermediaire = new JRadioButtonMenuItem("Intermï¿½diaire");
 		intermediaire.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I,InputEvent.CTRL_MASK));
 		intermediaire.setToolTipText("256 cases 40 mines");
 
@@ -100,9 +101,9 @@ public class DFenetre extends JFrame {
 		expert.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E,InputEvent.CTRL_MASK));
 		expert.setToolTipText("480 cases 99 mines");
 
-		perso = new  JRadioButtonMenuItem("Personnalisé...");
+		perso = new  JRadioButtonMenuItem("Personnalisï¿½...");
 		perso.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P,InputEvent.CTRL_MASK));
-		perso.setToolTipText("Partie avec vos votres paramètres");
+		perso.setToolTipText("Partie avec vos votres paramï¿½tres");
 		
 		jeu.add(debutant);
 		jeu.add(intermediaire);
@@ -146,13 +147,13 @@ public class DFenetre extends JFrame {
 
 		aPropos.addSeparator();
 		
-		createur = new JMenuItem("Créateurs");
+		createur = new JMenuItem("Crï¿½ateurs");
 		createur.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,InputEvent.CTRL_MASK));
 		createur.setToolTipText("Par qui ?");
 		aPropos.add(createur);
 		
 				
-		/* ajout des menus à la barre */
+		/* ajout des menus ï¿½ la barre */
 		barreMenus = new JMenuBar();
 		barreMenus.add(jeu);
 		barreMenus.add(options);
