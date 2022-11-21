@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DButton extends JButton{
-	
+	//Pas utiliser
 	int x,y; // permet de connaitre l'emplacement du bouton
 
 	public DButton(int i, int j){
