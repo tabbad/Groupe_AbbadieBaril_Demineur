@@ -25,7 +25,7 @@ public class DFenetre extends JFrame {
 	//private int tailleX, tailleY;
 	
 	private JButton go;
-	private DButton[][] boutons;
+	//private DButton[][] boutons;
 	private DPartie partie;
 
 	private DImageur imageur;
