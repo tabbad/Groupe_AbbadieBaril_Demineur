@@ -1,8 +1,12 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 
 public class Onglet{
+	//Pas utiliser
+	
+	
 	JFrame maFen;
 	JTabbedPane jtp;
 	
@@ -80,5 +84,5 @@ public class Onglet{
 			maFen.setSize(300, 200);
 			maFen.setVisible(true);
 	}
-	
    }
+   

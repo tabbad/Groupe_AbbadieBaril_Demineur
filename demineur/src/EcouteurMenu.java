@@ -66,8 +66,8 @@ public class EcouteurMenu implements ActionListener{
 		}
 		if(ae.getSource()==fenetre.getCreateur()) 
 				JOptionPane.showMessageDialog(fenetre,
-				     " Réalisé par Igor DAURIAC et Nicolas FRANCOIS, Projet IHM"
-				      ,"Créateurs...",JOptionPane.INFORMATION_MESSAGE);
+				     " Rï¿½alisï¿½ par Igor DAURIAC et Nicolas FRANCOIS, Projet IHM"
+				      ,"Crï¿½ateurs...",JOptionPane.INFORMATION_MESSAGE);
 			
 			
 		

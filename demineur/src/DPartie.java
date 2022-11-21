@@ -1,15 +1,15 @@
 public class DPartie {
 	
 	private DMatrice dm;
-	private boolean commence, perdu;
+	//private boolean commence, perdu;
 	
 	public DPartie(int h, int l, int nb){
 		nouvellePartie(h,l,nb);
 	}
 	
 	public void nouvellePartie(int h, int l, int nb){
-		commence = false;
-		perdu = false;
+		//commence = false;
+		/*perdu = false;*/
 		dm = new DMatrice(h,l,nb);		
 	}
 	
@@ -17,10 +17,11 @@ public class DPartie {
 		return dm;
 	}
 	
+	/*
 	public void commencer(){
 		commence = true;
 	}
-	
+	*/
 	public boolean gagne(){
 		return (dm.getCaseNonMineeRestante()==0);
 	}
@@ -29,9 +30,10 @@ public class DPartie {
 		return dm.aExplose();
 	}
 	
+	/*
 	public boolean fini(){
 		return(commence && (!perdu()) && (!gagne()));
 	}
-
+*/
 	
 }
