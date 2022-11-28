@@ -1,13 +1,13 @@
 import java.awt.event.*;
 
-import metier.DMatrice;
+import metier.DPartie;
 
 public class EcouteurGo implements ActionListener{
 	
 	DFenetre fenetre;
-	DMatrice partie;
+	DPartie partie;
 	
-	public EcouteurGo(DFenetre f, DMatrice p){
+	public EcouteurGo(DFenetre f, DPartie p){
 		fenetre = f;
 		partie = p;
 	}
@@ -17,7 +17,7 @@ public class EcouteurGo implements ActionListener{
 		fenetre.arretChrono();
 		fenetre.initChrono();
 		
-		partie= new DMatrice(partie.getHauteur(),
+		partie= new DPartie(partie.getHauteur(),
 		                      partie.getLargeur(),
 		                      partie.getMines());
 		

@@ -1,11 +1,11 @@
 import java.io.*;
 import java.util.*;
 
-import metier.DMatrice;
+import metier.DPartie;
 
 public class Main{
 	public static void main(String[] args){	
-			DMatrice partie = new DMatrice(9,9,10);
+			DPartie partie = new DPartie(9,9,10);
 			DFenetre fenetre = new DFenetre(partie);
 		
 			EcouteurGo e = new EcouteurGo(fenetre,partie);

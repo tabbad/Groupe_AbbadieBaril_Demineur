@@ -2,16 +2,17 @@ package metier;
 
 import java.lang.*;
 import java.util.Random;
- 
 
-public class DMatrice{
+
+public class DPartie{
 	
 	private int hauteur, largeur, nbMines; // parametres de la partie
 	private DCase[][] matrice; 
 	private int caseNonMineeRestante;
 	private boolean explosion;
+	private EtatPartie etatP;
 	
-	public DMatrice(int h, int l, int nb){
+	public DPartie(int h, int l, int nb){
 		hauteur = h;
 		largeur = l;
 		nbMines = nb;
@@ -23,12 +24,18 @@ public class DMatrice{
 		miner();
 		preparerAlentour(); 
 		caseNonMineeRestante = hauteur*largeur-nbMines;
+		etatP=EtatPartie.ENCOURS;
 	}
 	
 	
-//	public void nouvellePartie(int h, int l, int nb){
-//		dm = new DMatrice(h,l,nb);	
-//	}
+	public EtatCase getEtatCase(int a,int b) {
+		return getCase(a, b).getEtatCase(etatP);
+		
+	}
+	
+	public EtatPartie getEtatPartie() {
+		return (EtatPartie) etatP;
+	}
 	
 	public boolean gagne(){
 		return (getCaseNonMineeRestante()==0);

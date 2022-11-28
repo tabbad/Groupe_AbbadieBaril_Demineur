@@ -1,4 +1,7 @@
 import javax.swing.*;
+
+import metier.EtatCase;
+import metier.DPartie;
 import java.awt.*;
 
 public class DPanneau extends JPanel{
@@ -17,7 +20,7 @@ public class DPanneau extends JPanel{
 		super.paintComponent(g);
 		for(int i=0; i<hauteur; i++)
 			for(int j=0;j<largeur; j++){
-				g.drawImage(imageur.getImage(i,j).getImage(),j*20,i*20,this);
+				g.drawImage(imageur.getIcon(imageur.getPartie().getEtatCase(i, j)).getImage(),j*20,i*20,this);
 			}
 	}	
 }

@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-import metier.DMatrice;
+import metier.DPartie;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -29,14 +29,14 @@ public class DFenetre extends JFrame {
 	
 	private JButton go;
 	//private DButton[][] boutons;
-	private DMatrice partie;
+	private DPartie partie;
 
 	private DImageur imageur;
 	private DPanneau centre;
 	
 	int type;
 	
-	public DFenetre(DMatrice p){
+	public DFenetre(DPartie p){
 		super("Demineur");
 			menu();
 		type = DEBUTANT;
@@ -46,7 +46,7 @@ public class DFenetre extends JFrame {
 		connecterPartie(p);
 	}
 	
-	public void connecterPartie(DMatrice p){
+	public void connecterPartie(DPartie p){
 		partie = p; 
 		nb_lgn = p.getHauteur();
 		nb_col = p.getLargeur();
