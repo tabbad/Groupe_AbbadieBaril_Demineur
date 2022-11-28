@@ -1,5 +1,8 @@
+package metier;
+
 import java.lang.*;
 import java.util.Random;
+ 
 
 public class DMatrice{
 	
@@ -20,6 +23,19 @@ public class DMatrice{
 		miner();
 		preparerAlentour(); 
 		caseNonMineeRestante = hauteur*largeur-nbMines;
+	}
+	
+	
+//	public void nouvellePartie(int h, int l, int nb){
+//		dm = new DMatrice(h,l,nb);	
+//	}
+	
+	public boolean gagne(){
+		return (getCaseNonMineeRestante()==0);
+	}
+	
+	public boolean perdu(){
+		return aExplose();
 	}
 	
 	public DCase getCase(int i, int j)  {
@@ -45,7 +61,7 @@ public class DMatrice{
 	
 	public void devoilerCase(int i,int j){
 
-		/* Case découverte */
+		/* Case dï¿½couverte */
 		try{
 			   	matrice[i][j].setDecouverte();
 			   	caseNonMineeRestante--;
@@ -53,14 +69,14 @@ public class DMatrice{
 		catch(ArrayIndexOutOfBoundsException e){  }
 		
 		
-		  /* on regarde si la case est minée */
+		  /* on regarde si la case est minï¿½e */
 		try{
 			  if(matrice[i][j].estMine())
 			  	explosion = true;
 			  else{
 			  
 		  	
-		 		/* propagation éventuelle */
+		 		/* propagation ï¿½ventuelle */
 
 				if(matrice[i][j].getMinesAlentour()==0){
 					
@@ -179,7 +195,7 @@ public class DMatrice{
 					
 		
 				
-						/* les mines ont étés comptés*/
+						/* les mines ont ï¿½tï¿½s comptï¿½s*/
 						matrice[i][j].setMinesAlentour(minesCompteur);								
 					}
 			

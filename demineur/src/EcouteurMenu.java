@@ -1,13 +1,16 @@
 import java.awt.event.*;
 import javax.swing.*;
+
+import metier.DMatrice;
+
 import java.io.*;
 
 public class EcouteurMenu implements ActionListener{
 	
-	private DPartie partie;
+	private DMatrice partie;
 	private DFenetre fenetre;
 	
-	public EcouteurMenu(DFenetre f, DPartie p){
+	public EcouteurMenu(DFenetre f, DMatrice p){
 		partie = p;
 		fenetre = f;
 	}
@@ -17,15 +20,15 @@ public class EcouteurMenu implements ActionListener{
 	    	if(ae.getSource() == fenetre.getNouvelle()){
 			fenetre.arretChrono();
 			fenetre.initChrono();
-			partie.nouvellePartie(partie.getMatrice().getHauteur(),
-		                      partie.getMatrice().getLargeur(),
-		                      partie.getMatrice().getMines());
+			partie=new DMatrice(partie.getHauteur(),
+		                      partie.getLargeur(),
+		                      partie.getMines());
 			fenetre.connecterPartie(partie);
 		}
 	       	if(ae.getSource() == fenetre.getDebutant()){
 				fenetre.arretChrono();
 				fenetre.initChrono();
-				partie.nouvellePartie(9,9,10);
+				partie=new DMatrice(9,9,10);
 				fenetre.type = fenetre.DEBUTANT;
 				fenetre.connecterPartie(partie);
 				}
@@ -33,14 +36,14 @@ public class EcouteurMenu implements ActionListener{
 		if(ae.getSource() == fenetre.getIntermediaire()){
 				fenetre.arretChrono();
 				fenetre.initChrono();
-				partie.nouvellePartie(16,16,40);
+				partie=new DMatrice(16,16,40);
 				fenetre.type = fenetre.INTER;
 				fenetre.connecterPartie(partie);
 		}	
 		if(ae.getSource() == fenetre.getExpert()){
 				fenetre.arretChrono();
 				fenetre.initChrono();
-				partie.nouvellePartie(16,30,99);
+				partie=new DMatrice(16,30,99);
 				fenetre.type = fenetre.EXPERT;
 				fenetre.connecterPartie(partie);
 		}
