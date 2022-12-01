@@ -21,6 +21,8 @@ public class DPanneau extends JPanel{
 		for(int i=0; i<hauteur; i++)
 			for(int j=0;j<largeur; j++){
 				g.drawImage(imageur.getIcon(imageur.getPartie().getEtatCase(i, j)).getImage(),j*20,i*20,this);
+				//imageur.getPartie().getEtatPartie()
+				System.out.println(imageur.getPartie().getEtatPartie());
 			}
 	}	
 }

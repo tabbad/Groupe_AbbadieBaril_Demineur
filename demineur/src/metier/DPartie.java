@@ -34,6 +34,9 @@ public class DPartie{
 	}
 	
 	public EtatPartie getEtatPartie() {
+		if(perdu()) {
+		 etatP= EtatPartie.FINI;
+		}
 		return (EtatPartie) etatP;
 	}
 	
