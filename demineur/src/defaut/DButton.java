@@ -1,3 +1,4 @@
+package defaut;
 import javax.swing.*;
 import java.awt.*;
 

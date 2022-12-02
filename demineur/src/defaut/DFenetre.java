@@ -1,3 +1,4 @@
+package defaut;
 import javax.swing.*;
 
 import metier.DPartie;
@@ -5,7 +6,7 @@ import metier.DPartie;
 import java.awt.*;
 import java.awt.event.*;
 
-public class DFenetre extends JFrame {
+public class DFenetre extends JFrame implements IDPartie {
 
 	final static int DEBUTANT = 1;
 	final static int INTER = 2;

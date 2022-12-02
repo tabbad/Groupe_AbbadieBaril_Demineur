@@ -32,7 +32,7 @@ public class DPartie {
 	}
 
 	public EtatCase getEtatCase(int a, int b) {
-		return getCase(a, b).getEtatCase(etatP);
+		return matrice[a][b].getEtatCase(etatP);
 
 	}
 
@@ -52,6 +52,10 @@ public class DPartie {
 		return DIMENSION_MAX;
 	}
 
+	public DCase[][] getMatrice(){
+		return matrice;
+	}
+	
 	public EtatPartie setEtatPartie() {
 		if (perdu() || gagne()) {
 			etatP = EtatPartie.FINI;
@@ -65,15 +69,6 @@ public class DPartie {
 
 	public boolean perdu() {
 		return aExplose();
-	}
-
-	public DCase getCase(int i, int j) {
-		try {
-			return matrice[i][j];
-		} catch (ArrayIndexOutOfBoundsException e) {
-			return null;
-		}
-
 	}
 
 	public int getHauteur() {
