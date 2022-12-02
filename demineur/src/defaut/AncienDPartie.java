@@ -1,3 +1,4 @@
+package defaut;
 //public class DPartie {
 //	
 //	private DMatrice dm;

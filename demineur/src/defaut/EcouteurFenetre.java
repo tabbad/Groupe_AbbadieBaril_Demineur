@@ -1,3 +1,4 @@
+package defaut;
 import java.awt.event.*;
 
 public class EcouteurFenetre extends WindowAdapter{
