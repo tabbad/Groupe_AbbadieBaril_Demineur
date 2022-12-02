@@ -11,9 +11,9 @@ public class EcouteurMenu implements ActionListener{
 	private DPartie partie;
 	private DFenetre fenetre;
 	
-	public EcouteurMenu(DFenetre f, DPartie p){
-		partie = p;
+	public EcouteurMenu(DFenetre f){
 		fenetre = f;
+		partie = f.getPartie();
 	}
 	
 	
@@ -50,7 +50,7 @@ public class EcouteurMenu implements ActionListener{
 		}
 		
 		if(ae.getSource() == fenetre.getPerso()){
-			Pref pref = new Pref(fenetre, partie);
+			Pref pref = new Pref(fenetre);
 			fenetre.type = fenetre.PERSO;
 
 		}
