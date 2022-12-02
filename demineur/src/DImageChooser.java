@@ -7,7 +7,7 @@ public class DImageChooser extends JFileChooser {
 	
 	
 	
-	public DImageChooser(DImageur imageur, DPanneau panneau){
+	public DImageChooser(DPanneau panneau){
 		super("./resources/Images/");
 		setApproveButtonText("OK");
  		setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -17,12 +17,12 @@ public class DImageChooser extends JFileChooser {
 			String fichier;
 			if((fichier= estValide(path))==null){
 				panneau.repaint();
-				imageur.setRepertoire(path);
+				DImageur.setRepertoire(path);
 			}
 			else
 				JOptionPane.showMessageDialog(this,
 				     fichier + " est manquant ou invalide"
-				      ,"Répertoire invalide",JOptionPane.ERROR_MESSAGE);
+				      ,"Rï¿½pertoire invalide",JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

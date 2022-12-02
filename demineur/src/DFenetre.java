@@ -30,8 +30,7 @@ public class DFenetre extends JFrame {
 	private JButton go;
 	//private DButton[][] boutons;
 	private DPartie partie;
-
-	private DImageur imageur;
+	
 	private DPanneau centre;
 	
 	int type;
@@ -40,7 +39,6 @@ public class DFenetre extends JFrame {
 		super("Demineur");
 			menu();
 		type = DEBUTANT;
-		imageur = new DImageur(p);
 		miseEnPage();
 	
 		connecterPartie(p);
@@ -59,7 +57,7 @@ public class DFenetre extends JFrame {
 		/* partie centrale : damier */
 		if(centre!=null)
 			getContentPane().remove(centre);
-		centre = new DPanneau(imageur, nb_lgn, nb_col);
+		centre = new DPanneau(this, nb_lgn, nb_col);
 		
 		EcouteurSouris ecouteurSouris = new EcouteurSouris(this, partie);
 		centre.addMouseListener(ecouteurSouris);
@@ -79,6 +77,14 @@ public class DFenetre extends JFrame {
 	 	this.repaint();
 	
 
+	}
+	
+	public DPartie getPartie() {
+		return (DPartie) partie;
+	}
+	
+	public ImageIcon getIcon(int i, int j) {
+		return DImageur.getIcon(partie.getEtatCase(i, j));
 	}
 	
 	private void menu(){
@@ -276,24 +282,20 @@ public class DFenetre extends JFrame {
 		return centre;
 	}
 	
-	public DImageur getImageur(){
-		return imageur;
-	}
-	
 	public void goPerdu(){
-		go.setIcon(new ImageIcon(imageur.getRepertoire()+"/Perdu.GIF"));
+		go.setIcon(new ImageIcon(DImageur.getRepertoire()+"/Perdu.GIF"));
 	}
 	
 	public void goGagne(){
-		go.setIcon(new ImageIcon(imageur.getRepertoire()+"/Gagne.GIF"));
+		go.setIcon(new ImageIcon(DImageur.getRepertoire()+"/Gagne.GIF"));
 	}
 	
 	public void goOups(){
-		go.setIcon(new ImageIcon(imageur.getRepertoire()+"/Oups.GIF"));
+		go.setIcon(new ImageIcon(DImageur.getRepertoire()+"/Oups.GIF"));
 	}
 	
 	public void goCool(){
-		go.setIcon(new ImageIcon(imageur.getRepertoire()+"/Cool.GIF"));
+		go.setIcon(new ImageIcon(DImageur.getRepertoire()+"/Cool.GIF"));
 	}
 	
 	public void miseAJourCompteur(){

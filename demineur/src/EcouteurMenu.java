@@ -56,8 +56,7 @@ public class EcouteurMenu implements ActionListener{
 		
 		if(ae.getSource() == fenetre.getDesign()){
 			DImageChooser choix = 
-			      new DImageChooser(fenetre.getImageur(),
-			                        fenetre.getPanneauCentral() );
+			      new DImageChooser(fenetre.getPanneauCentral() );
 		}
 		
 		if(ae.getSource() == fenetre.getQuitter())

@@ -7,28 +7,17 @@ import java.awt.*;
 
 public class DImageur{
 	
-	private DPartie partie;
-	public String repertoire = "resources/Images/Classic";
+	public static String repertoire = "resources/Images/Classic";
 	
-	public DPartie getPartie() {
-		return (DPartie) partie;
-	}
-	
-	public DImageur(DPartie p){
-		partie = p;
-	}
-	
-	public String getRepertoire(){
+	public static String getRepertoire(){
 		return repertoire;
 	}
 	
-	public void setRepertoire(String s){
+	public static void setRepertoire(String s){
 		repertoire = s;
 	}
 	
-	
-	
-	public ImageIcon getIcon(EtatCase e){
+	public static ImageIcon getIcon(EtatCase e){
 		switch (e) {
 		case PASDECOUVERT:return new ImageIcon(repertoire+"/Inconnue.GIF");
 		case DRAPEAU:return new ImageIcon(repertoire+"/Drapeau.GIF");
@@ -44,8 +33,8 @@ public class DImageur{
 		case SEPT: return new ImageIcon(repertoire+"/7.GIF");
 		case HUIT: return new ImageIcon(repertoire+"/8.GIF");
 		default : return new ImageIcon(repertoire+"/Mine.GIF");
-	}
+		}
 
-}
+	}
 	
 }
