@@ -7,20 +7,17 @@ import java.awt.*;
 public class DPanneau extends JPanel{
 	
 	private DFenetre fenetre;
-	private int hauteur, largeur;
 	
-	public DPanneau(DFenetre fe, int h, int l){
+	public DPanneau(DFenetre fe){
 		super();
 		fenetre = fe;
-		hauteur = h;
-		largeur = l;
 	}
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		fenetre.getPartie().setEtatPartie();
-		for(int i=0; i<hauteur; i++) {
-			for(int j=0;j<largeur; j++){
+		for(int i=0; i<fenetre.getPartie().getHauteur(); i++) {
+			for(int j=0;j<fenetre.getPartie().getLargeur(); j++){
 				g.drawImage(fenetre.getIcon(i,j).getImage(),j*20,i*20,this);
 			}
 		}	

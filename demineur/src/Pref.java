@@ -12,10 +12,7 @@ public class Pref implements ActionListener, FocusListener{
 	JButton btnOk, btnAnnuler;
 	
 	
-	static int NB_MINES_MIN = 10;
-	static int NB_MINES_MAX = 665;
-	static int DIMENSION_MIN = 9;
-	static int DIMENSION_MAX = 25;
+
 	
 	int hauteur, largeur, mines;
 	
@@ -52,9 +49,9 @@ public class Pref implements ActionListener, FocusListener{
 		partie = p;
 		System.out.println("Choix");
 		
-		hauteur = fenetre.getHauteur();
-		largeur = fenetre.getLargeur();
-		mines = fenetre.getMines();
+		hauteur = fenetre.getPartie().getHauteur();
+		largeur = fenetre.getPartie().getLargeur();
+		mines = fenetre.getPartie().getMines();
 		
 		miseEnPage();
 		ajoutEcouteurs();
@@ -121,7 +118,7 @@ public class Pref implements ActionListener, FocusListener{
 	private void miseEnPage(){
 		Container c = maFen.getContentPane();
 		
-		//  Ajout des lables, zones de saisie et des boutons
+		//  Ajout des labels, zones de saisie et des boutons
 		Container container = new Container();
 		container.setLayout(new BorderLayout(20, 0));
 		container.add(label(), BorderLayout.WEST);
@@ -168,16 +165,16 @@ public class Pref implements ActionListener, FocusListener{
 		int val = Integer.parseInt(jtf.getText());
 		
 		if(jtf.equals(jtfMines)){
-			if(val<NB_MINES_MIN)
-				jtf.setText(Integer.toString(NB_MINES_MIN));
-			if(val>NB_MINES_MAX)
-				jtf.setText(Integer.toString(NB_MINES_MAX));
+			if(val<partie.getNbMinMines())
+				jtf.setText(Integer.toString(partie.getNbMinMines()));
+			if(val>partie.getNbMaxMines())
+				jtf.setText(Integer.toString(partie.getNbMaxMines()));
 		}
 		else{
-			if(val<DIMENSION_MIN)
-				jtf.setText(Integer.toString(DIMENSION_MIN));
-			if(val>DIMENSION_MAX)
-				jtf.setText(Integer.toString(DIMENSION_MAX));
+			if(val<partie.getDimMin())
+				jtf.setText(Integer.toString(partie.getDimMin()));
+			if(val>partie.getDimMax())
+				jtf.setText(Integer.toString(partie.getDimMax()));
 		}
 		
 	}
