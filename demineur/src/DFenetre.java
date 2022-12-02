@@ -12,10 +12,6 @@ public class DFenetre extends JFrame {
 	final static int EXPERT = 3;
 	final static int PERSO = 4;
 	
-	int nb_col;
-	int nb_lgn;
-	int nb_mines;
-	
 	JMenuBar barreMenus;
 	JMenu jeu, options, aPropos;
 	
@@ -46,18 +42,14 @@ public class DFenetre extends JFrame {
 	
 	public void connecterPartie(DPartie p){
 		partie = p; 
-		nb_lgn = p.getHauteur();
-		nb_col = p.getLargeur();
-		nb_mines = p.getMines();
 		
-
 		miseAJourCompteur();
 		goCool();
 		
 		/* partie centrale : damier */
 		if(centre!=null)
 			getContentPane().remove(centre);
-		centre = new DPanneau(this, nb_lgn, nb_col);
+		centre = new DPanneau(this);
 		
 		EcouteurSouris ecouteurSouris = new EcouteurSouris(this, partie);
 		centre.addMouseListener(ecouteurSouris);
@@ -68,7 +60,7 @@ public class DFenetre extends JFrame {
 		/* Affichage */
 		
 		//this.setSize(20*nb_col + 6, 20*nb_lgn + 50 + 23 + 25);
-		this.setSize(22*nb_col + 6, 22*nb_lgn + 50 + 23 + 25);
+		this.setSize(22*p.getLargeur() + 6, 22*p.getHauteur() + 50 + 23 + 25);
 		
 		this.setResizable(false);
 	 	
@@ -224,18 +216,6 @@ public class DFenetre extends JFrame {
 	public JMenuItem getCreateur(){
 		return createur;
 	}
-	
-	public int getHauteur(){
-		return nb_lgn;
-	}
-
-	public int getLargeur(){
-		return nb_col;
-	}
-	
-	public int getMines(){
-		return nb_mines;
-	}	
 	
 	private void miseEnPage(){
 		Container c = this.getContentPane();
