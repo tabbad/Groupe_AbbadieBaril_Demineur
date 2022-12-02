@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-import metier.DMatrice;
+import metier.DPartie;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -29,24 +29,22 @@ public class DFenetre extends JFrame {
 	
 	private JButton go;
 	//private DButton[][] boutons;
-	private DMatrice partie;
-
-	private DImageur imageur;
+	private DPartie partie;
+	
 	private DPanneau centre;
 	
 	int type;
 	
-	public DFenetre(DMatrice p){
+	public DFenetre(DPartie p){
 		super("Demineur");
 			menu();
 		type = DEBUTANT;
-		imageur = new DImageur(p);
 		miseEnPage();
 	
 		connecterPartie(p);
 	}
 	
-	public void connecterPartie(DMatrice p){
+	public void connecterPartie(DPartie p){
 		partie = p; 
 		nb_lgn = p.getHauteur();
 		nb_col = p.getLargeur();
@@ -59,7 +57,7 @@ public class DFenetre extends JFrame {
 		/* partie centrale : damier */
 		if(centre!=null)
 			getContentPane().remove(centre);
-		centre = new DPanneau(imageur, nb_lgn, nb_col);
+		centre = new DPanneau(this, nb_lgn, nb_col);
 		
 		EcouteurSouris ecouteurSouris = new EcouteurSouris(this, partie);
 		centre.addMouseListener(ecouteurSouris);
@@ -79,6 +77,14 @@ public class DFenetre extends JFrame {
 	 	this.repaint();
 	
 
+	}
+	
+	public DPartie getPartie() {
+		return (DPartie) partie;
+	}
+	
+	public ImageIcon getIcon(int i, int j) {
+		return DImageur.getIcon(partie.getEtatCase(i, j));
 	}
 	
 	private void menu(){
@@ -276,24 +282,20 @@ public class DFenetre extends JFrame {
 		return centre;
 	}
 	
-	public DImageur getImageur(){
-		return imageur;
-	}
-	
 	public void goPerdu(){
-		go.setIcon(new ImageIcon(imageur.getRepertoire()+"/Perdu.GIF"));
+		go.setIcon(new ImageIcon(DImageur.getRepertoire()+"/Perdu.GIF"));
 	}
 	
 	public void goGagne(){
-		go.setIcon(new ImageIcon(imageur.getRepertoire()+"/Gagne.GIF"));
+		go.setIcon(new ImageIcon(DImageur.getRepertoire()+"/Gagne.GIF"));
 	}
 	
 	public void goOups(){
-		go.setIcon(new ImageIcon(imageur.getRepertoire()+"/Oups.GIF"));
+		go.setIcon(new ImageIcon(DImageur.getRepertoire()+"/Oups.GIF"));
 	}
 	
 	public void goCool(){
-		go.setIcon(new ImageIcon(imageur.getRepertoire()+"/Cool.GIF"));
+		go.setIcon(new ImageIcon(DImageur.getRepertoire()+"/Cool.GIF"));
 	}
 	
 	public void miseAJourCompteur(){

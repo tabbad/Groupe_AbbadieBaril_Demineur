@@ -1,16 +1,16 @@
 import java.awt.event.*;
 import java.io.*;
 
-import metier.DMatrice;
+import metier.DPartie;
 
 public class EcouteurSouris  implements MouseListener, MouseMotionListener{
 	
-	private DMatrice partie;
+	private DPartie partie;
 	private DFenetre fenetre;
 	private int sourisX, sourisY;
 	private boolean gauchePresse;
 	
-	public EcouteurSouris(DFenetre f, DMatrice p){
+	public EcouteurSouris(DFenetre f, DPartie p){
 		partie = p;
 		fenetre = f;
 		gauchePresse = false;

@@ -2,16 +2,17 @@ package metier;
 
 import java.lang.*;
 import java.util.Random;
- 
 
-public class DMatrice{
+
+public class DPartie{
 	
 	private int hauteur, largeur, nbMines; // parametres de la partie
 	private DCase[][] matrice; 
 	private int caseNonMineeRestante;
 	private boolean explosion;
+	private EtatPartie etatP;
 	
-	public DMatrice(int h, int l, int nb){
+	public DPartie(int h, int l, int nb){
 		hauteur = h;
 		largeur = l;
 		nbMines = nb;
@@ -23,12 +24,21 @@ public class DMatrice{
 		miner();
 		preparerAlentour(); 
 		caseNonMineeRestante = hauteur*largeur-nbMines;
+		etatP=EtatPartie.ENCOURS;
 	}
 	
 	
-//	public void nouvellePartie(int h, int l, int nb){
-//		dm = new DMatrice(h,l,nb);	
-//	}
+	public EtatCase getEtatCase(int a,int b) {
+		return getCase(a, b).getEtatCase(etatP);
+		
+	}
+	
+	public EtatPartie setEtatPartie() {
+		if(perdu() || gagne()) {
+		 etatP= EtatPartie.FINI;
+		}
+		return (EtatPartie) etatP;
+	}
 	
 	public boolean gagne(){
 		return (getCaseNonMineeRestante()==0);
@@ -80,53 +90,15 @@ public class DMatrice{
 
 				if(matrice[i][j].getMinesAlentour()==0){
 					
-					try{
-						if(!matrice[i-1][j-1].estDecouverte())
-							devoilerCase(i-1,j-1);
+					for (int x = -1; x< 2; x++) {
+						for(int y = -1; y< 2; y++) {
+							try{
+								if(!matrice[i+x][j+y].estDecouverte())
+									devoilerCase(i+x,j+y);
+							}
+							catch(ArrayIndexOutOfBoundsException e){  }
+						}
 					}
-					catch(ArrayIndexOutOfBoundsException e){  }
-				
-					try{
-						if(!matrice[i-1][j].estDecouverte())
-							devoilerCase(i-1,j);
-					}
-					catch(ArrayIndexOutOfBoundsException e){  }
-				
-					try{
-						if(!matrice[i-1][j+1].estDecouverte())
-							devoilerCase(i-1,j+1);	
-					}
-					catch(ArrayIndexOutOfBoundsException e){  }
-				
-					try{
-						if(!matrice[i][j-1].estDecouverte())
-							devoilerCase(i,j-1);	
-					}
-					catch(ArrayIndexOutOfBoundsException e){  }
-				
-					try{
-						if(!matrice[i][j+1].estDecouverte())
-							devoilerCase(i,j+1);
-					}
-					catch(ArrayIndexOutOfBoundsException e){  }
-				
-					try{
-						if(!matrice[i+1][j-1].estDecouverte())
-							devoilerCase(i+1,j-1);	
-					}
-					catch(ArrayIndexOutOfBoundsException e){  }
-				
-					try{
-						if(!matrice[i+1][j].estDecouverte())
-							devoilerCase(i+1,j);	
-					}
-					catch(ArrayIndexOutOfBoundsException e){  }
-								
-					try{
-						if(!matrice[i+1][j+1].estDecouverte())
-							devoilerCase(i+1,j+1);	
-					}
-					catch(ArrayIndexOutOfBoundsException e){  }
 				}
 			}
 		}
@@ -145,55 +117,15 @@ public class DMatrice{
 			for(int j=0; j<largeur; j++){
 					minesCompteur=0;
 					if(!matrice[i][j].estMine()){
-						try{
-							if(matrice[i-1][j-1].estMine()) 
-								minesCompteur++;
+						for (int x = -1; x< 2; x++) {
+							for(int y = -1; y< 2; y++) {
+								try{
+									if(matrice[i+x][j+y].estMine()) 
+										minesCompteur++;
+								}
+								catch(ArrayIndexOutOfBoundsException e){  }
+							}
 						}
-						catch(ArrayIndexOutOfBoundsException e){  }
-								
-						try{
-							if(matrice[i-1][j].estMine()) 
-								minesCompteur++;
-						}
-						catch(ArrayIndexOutOfBoundsException e){  }
-						
-						try{
-							if(matrice[i-1][j+1].estMine()) 
-								minesCompteur++;
-						}
-						catch(ArrayIndexOutOfBoundsException e){  }
-						
-						try{
-							if(matrice[i][j-1].estMine()) 
-								minesCompteur++;
-						}
-						catch(ArrayIndexOutOfBoundsException e){  }
-						
-						try{
-							if(matrice[i][j+1].estMine()) 
-								minesCompteur++;
-						}
-						catch(ArrayIndexOutOfBoundsException e){  }
-							
-						try{
-							if(matrice[i+1][j-1].estMine()) 
-								minesCompteur++;
-						}
-						catch(ArrayIndexOutOfBoundsException e){  }
-						
-						try{
-							if(matrice[i+1][j].estMine()) 
-								minesCompteur++;
-						}
-						catch(ArrayIndexOutOfBoundsException e){  }
-						
-						try{
-							if(matrice[i+1][j+1].estMine()) 
-								minesCompteur++;
-						}
-						catch(ArrayIndexOutOfBoundsException e){  }
-					
-		
 				
 						/* les mines ont �t�s compt�s*/
 						matrice[i][j].setMinesAlentour(minesCompteur);								

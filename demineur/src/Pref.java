@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-import metier.DMatrice;
+import metier.DPartie;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -23,7 +23,7 @@ public class Pref implements ActionListener, FocusListener{
 	
 	
 	private DFenetre fenetre;
-	private DMatrice partie;
+	private DPartie partie;
 	
 	public Pref(int lng, int lrg, int nbMines){
 		maFen = new JFrame("Preferences");
@@ -46,7 +46,7 @@ public class Pref implements ActionListener, FocusListener{
 	}
 	
 	
-	public Pref(DFenetre fen, DMatrice p){
+	public Pref(DFenetre fen, DPartie p){
 		maFen = new JFrame("Preferences");
 		fenetre = fen;
 		partie = p;
@@ -150,7 +150,7 @@ public class Pref implements ActionListener, FocusListener{
 			fenetre.arretChrono();
 			fenetre.initChrono();
 		
-			partie=new DMatrice(hauteur,largeur,mines);
+			partie=new DPartie(hauteur,largeur,mines);
 			fenetre.connecterPartie(partie);	
 				
 		}
