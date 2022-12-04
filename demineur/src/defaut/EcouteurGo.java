@@ -8,9 +8,9 @@ public class EcouteurGo implements ActionListener{
 	DFenetre fenetre;
 	DPartie partie;
 	
-	public EcouteurGo(DFenetre f, DPartie p){
+	public EcouteurGo(DFenetre f){
 		fenetre = f;
-		partie = p;
+		partie = f.getPartie();
 	}
 	
 	

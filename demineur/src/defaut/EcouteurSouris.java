@@ -3,6 +3,7 @@ import java.awt.event.*;
 import java.io.*;
 
 import metier.DPartie;
+import metier.EtatPartie;
 
 public class EcouteurSouris  implements MouseListener, MouseMotionListener{
 	
@@ -11,9 +12,9 @@ public class EcouteurSouris  implements MouseListener, MouseMotionListener{
 	private int sourisX, sourisY;
 	private boolean gauchePresse;
 	
-	public EcouteurSouris(DFenetre f, DPartie p){
-		partie = p;
+	public EcouteurSouris(DFenetre f){
 		fenetre = f;
+		partie = fenetre.getPartie();
 		gauchePresse = false;
 	}
 	
@@ -21,7 +22,7 @@ public class EcouteurSouris  implements MouseListener, MouseMotionListener{
 		sourisX = me.getX()/20;
 		sourisY = me.getY()/20;
 		try{
-		  if(!partie.perdu() && !partie.gagne() 
+		  if( partie.setEtatPartie() == EtatPartie.ENCOURS
 		       && !(partie.getMatrice()[sourisY][sourisX].yaDrapreau())){
 			
 			if(me.getButton()==me.BUTTON1){

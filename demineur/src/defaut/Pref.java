@@ -23,17 +23,17 @@ public class Pref implements ActionListener, FocusListener{
 	private DFenetre fenetre;
 	private DPartie partie;
 	
-	public Pref(int lng, int lrg, int nbMines){
+	public Pref(int h, int l, int m){
 		maFen = new JFrame("Preferences");
 		
 		System.out.println("Choix");
 		
-		hauteur = lng;
-		largeur = lrg;
-		mines = nbMines;
-		
 		miseEnPage();
 		ajoutEcouteurs();
+		
+		hauteur = h;
+		largeur = l;
+		mines = m;
 		
 		maFen.setSize(300, 200);
 		maFen.setVisible(true);
@@ -44,15 +44,15 @@ public class Pref implements ActionListener, FocusListener{
 	}
 	
 	
-	public Pref(DFenetre fen, DPartie p){
+	public Pref(DFenetre fen){
 		maFen = new JFrame("Preferences");
 		fenetre = fen;
-		partie = p;
+		partie = fenetre.getPartie();
 		System.out.println("Choix");
 		
-		hauteur = fenetre.getPartie().getHauteur();
-		largeur = fenetre.getPartie().getLargeur();
-		mines = fenetre.getPartie().getMines();
+		hauteur = partie.getHauteur();
+		largeur = partie.getLargeur();
+		mines = partie.getMines();
 		
 		miseEnPage();
 		ajoutEcouteurs();

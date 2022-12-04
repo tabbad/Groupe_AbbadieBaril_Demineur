@@ -52,7 +52,7 @@ public class DFenetre extends JFrame implements IDPartie {
 			getContentPane().remove(centre);
 		centre = new DPanneau(this);
 		
-		EcouteurSouris ecouteurSouris = new EcouteurSouris(this, partie);
+		EcouteurSouris ecouteurSouris = new EcouteurSouris(this);
 		centre.addMouseListener(ecouteurSouris);
 		centre.addMouseMotionListener(ecouteurSouris);
 		
